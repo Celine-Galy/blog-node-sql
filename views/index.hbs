@@ -1,0 +1,42 @@
+
+<li><a href="/article">Liste articles</a></li>
+<li><a href="/employee">Liste employés</a></li>
+<li><a href="/picture">Ajouter une image</a></li>
+
+<h3>{{viewTitle}}</h3>
+<p class="blue">bla bla bla Lorem ipsum dolor sit amet 
+  consectetur adipisicing elit. Distinctio sint saepe harum quis quisquam r</p>
+
+  
+  <div class="row">
+
+      <div class="col s3">
+       
+         {{#each categories}}
+            <li><a href="/{{this._id}}">{{this.name}}</a></li>
+        {{/each}}
+   
+      </div>
+    <div class="col s9">{{#each articles}}
+      <div class="card medium">
+        <div class="card-image">
+          <img src="/uploads/{{this.imageUrl}}">
+          <span class="card-title">{{this.title}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{this.content}}</p>
+        </div>
+         <div class="card-content">
+          <p>{{this.author}}</p>
+        </div>
+         <div class="card-content">
+          <p>{{this.date}}</p>
+        </div>
+        <div class="card-action">
+          <a href="/{{this._id}}"> This is a link</a>
+              
+        </div>{{/each}}
+      </div>
+    </div>
+  </div>
+   

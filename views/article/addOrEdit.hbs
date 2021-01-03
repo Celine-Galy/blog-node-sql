@@ -1,0 +1,83 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/article" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{article._id}}">
+    <div class="form-group">
+        <label>Titre</label>
+        <input type="text" class="form-control" name="title" value="{{article.title}}" placeholder="Titre">
+        <div class="text-danger">
+            {{article.titleError}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Contenu</label>
+        <textarea class="form-control" name="content" value="{{article.content}}"
+            placeholder="Votre article">{{article.content}}</textarea>
+        <div class="text-danger">
+            {{article.contentError}}
+        </div>
+    </div>
+   <div class="form-group md-6">
+        <label>Auteur</label>    
+       
+        <select value="{{author.user_firstname}}" name="user_firstname">
+        
+      <option >Choose your author</option>
+           {{#each authors}}
+      <option>{{this.user_firstname}} {{this.user_lastname}}</option>
+      {{/each}}
+
+    </select>  
+            
+        </div>
+       
+        <div class="form-group md-6">
+        <label>Catégorie</label>    
+       
+        <select value="{{category.id}}" name="name" multiple>
+        
+      <option >Choose your category</option>
+           {{#each categories}}
+      <option>{{this.name}}</option>
+      {{/each}}
+
+    </select>  
+            
+        </div>
+   
+
+ <div class="form-group">
+    <select class="icons">
+      <option value="" >Choose your picture</option>
+                 {{#each picture}}
+      <option value="{{id_picture}}" data-icon="images/sample-1.jpg" class="left">example 1</option>
+           {{/each}}
+
+    </select>
+    <label>Images in select</label>
+  </div>
+
+
+
+
+    <div class="form-group">
+        <input type="file" name="imageUrl" name="imageUrl" value="{{article.imageUrl}}">
+        <div class="image-preview">
+            <img src="/uploads/{{article.imageUrl}}" name="imageUrl" value="{{article.imageUrl}}"
+                alt="{{article.imageUrl}}">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">
+            <i class="fa fa-database"></i>Submit</button>
+        <a href="/article/list" class="btn btn-danger">
+            <i class="fa fa-list-alt"></i>View All
+        </a>
+    </div>
+ </div>
+</form>

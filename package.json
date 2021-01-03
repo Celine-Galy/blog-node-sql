@@ -1,0 +1,25 @@
+{
+    "name": "blog-crud-sql",
+    "version": "1.0.0",
+    "description": "projet blog node/express/handlebars/sql",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Céline Galy",
+    "license": "ISC",
+    "dependencies": {
+        "@handlebars/allow-prototype-access": "^1.0.3",
+        "body-parser": "^1.19.0",
+        "email-validator": "^2.0.4",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "froala-editor": "^3.2.5",
+        "fs": "^0.0.1-security",
+        "handlebars": "^4.7.6",
+        "multer": "^1.4.2",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.6",
+        "path": "^0.12.7"
+    }
+}

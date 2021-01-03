@@ -1,0 +1,31 @@
+<h3>
+    {{viewTitle}}
+</h3>
+<a href="/category" class="btn btn-danger">
+    <i class="fa fa-plus"></i> Create New
+</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each categories}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>
+                <a href="/category/{{this.id}}">
+                   <i class="material-icons" aria-hidden="true">edit</i>
+                </a>
+                <a href="/article/delete/{{this.id}}" onclick="return confirm('Are you sure to delete this record?');">
+                    <i class="material-icons" aria-hidden="true">delete</i>
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

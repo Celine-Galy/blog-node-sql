@@ -1,0 +1,22 @@
+<h3>
+    {{viewTitle}}
+</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+           
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
