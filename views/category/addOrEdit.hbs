@@ -1,17 +1,18 @@
+
 <h3>{{viewTitle}}</h3>
 
 <form action="/category" method="POST" autocomplete="off">
-    <input type="hidden" name="id" value="{{categories.id}}">
+    <input type="hidden" name="id" value="">
     <div class="form-group">
         <label>Nom</label>
-        <input type="text" id="categoryname" class="form-control" name="name" value="{{categories.name}}" placeholder="name">
+        <input type="text"  class="form-control" name="name" value="{{categories.name}}" placeholder="name">
         <div class="text-danger">
             {{categories.nameError}}
         </div>
     </div>
     <div class="form-group">
         <label>Contenu</label>
-        <textarea class="form-control" id="categorydescription" name="description" value="{{categories.description}}"
+        <textarea class="form-control" name="description" value="{{categories.description}}"
             placeholder="Votre article">{{categories.description}}</textarea>
         <div class="text-danger">
             {{categories.descriptionError}}

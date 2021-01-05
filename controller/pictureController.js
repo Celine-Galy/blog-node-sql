@@ -64,11 +64,16 @@ router.post('/upload', (req, res) => {
                 });
 
             } else {
-
-                res.render('picture/addPicture', {
-                    msg: 'File upload!',
-                    file: req.file
-                });
+                insertfilename = req.file.filename;
+                insertpath = req.file.path;
+                pictureRepository.insertPicture(insertfilename, insertpath).then((err) => {
+                    res.render('picture/addPicture', {
+                        msg: 'File upload!',
+                        file: req.file
+                    });
+                }).catch((err) => {
+                    throw err;
+                })
 
             }
 

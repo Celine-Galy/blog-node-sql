@@ -1,7 +1,5 @@
-const mysql = require('mysql');
 class CategoryRepository {
 
-    // _SELECT_ALL_QUERY = "select * from categories";
     _dbManager;
     constructor(dbManager) {
         this._dbManager = dbManager;
@@ -12,19 +10,23 @@ class CategoryRepository {
         let query = "SELECT * FROM categories";
         return this._dbManager.query(query);
     }
-    insertCategory(category) {
-
-        let query = `INSERT INTO categories (name, description) VALUES ('${category[0]}', '${category[1]}')`;
+    insertCategory(name, description) {
+        let query = `INSERT INTO categories (name, description) VALUES ('${name}' , '${description}')`;
         console.log(query);
         return this._dbManager.query(query);
     }
-    updateCategory(category) {
-        let query = `UPDATE categories SET (name = '${category[1]}' , description = '${category[2]}') WHERE id= '${category[0]}'`;
+    updateCategory(id, name, description) {
+        let query = `UPDATE categories SET name = '${name}' , description = '${description}' WHERE id= '${id}'`;
         console.log(query);
         return this._dbManager.query(query);
     }
-    findCategoryById(category) {
-        let query = `SELECT * FROM categories WHERE id= '${category[0]}'`;
+    findCategoryById(id) {
+        let queryfind = `SELECT (id),(name),(description) FROM categories WHERE id='${id}'`;
+        console.log(queryfind);
+        return this._dbManager.query(queryfind);
+    }
+    deleteCategory(id) {
+        let query = `DELETE FROM categories WHERE id='${id}'`;
         console.log(query);
         return this._dbManager.query(query);
     }

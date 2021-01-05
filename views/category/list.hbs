@@ -2,7 +2,7 @@
     {{viewTitle}}
 </h3>
 <a href="/category" class="btn btn-danger">
-    <i class="fa fa-plus"></i> Create New
+    <i class="material-icons left" aria-hidden="true">add</i>Create New
 </a>
 <table class="table table-striped">
     <thead>
@@ -21,7 +21,7 @@
                 <a href="/category/{{this.id}}">
                    <i class="material-icons" aria-hidden="true">edit</i>
                 </a>
-                <a href="/article/delete/{{this.id}}" onclick="return confirm('Are you sure to delete this record?');">
+                <a href="/category/delete/{{this.id}}" onclick="return confirm('Are you sure to delete this record?');">
                     <i class="material-icons" aria-hidden="true">delete</i>
                 </a>
             </td>

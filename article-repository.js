@@ -13,8 +13,9 @@ class ArticleRepository {
 
 
     }
-    insertArticle() {
-        let query = "INSERT into articles (title, id_picture, content, date_creation,) INNER JOIN articles_categories ON articles_categories.id_article = articles.id INNER JOIN categories on categories.id = articles_categories.id_category ";
+    insertArticle(title, id_picture, content, date_creation, id_user) {
+        let query = `INSERT into articles (title, id_picture, content, date_creation, id_user) VALUES ('${title}' , '${id_picture}', '${content}', '${id_picture}','${date_creation}', '${id_user}')`;
+        console.log(query);
         return this._dbManager.query(query);
     }
 

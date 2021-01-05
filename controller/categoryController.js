@@ -7,7 +7,7 @@ const categoryRepository = new CategoryRepository(db);
 
 router.get('/', (req, res) => {
 
-    categoryRepository.findAllCategories().then((categories) => {
+    categoryRepository.findAllCategories().then((err, categories) => {
         res.render('listCategory', {
             categories,
             viewTitle: "Liste des catégories"
