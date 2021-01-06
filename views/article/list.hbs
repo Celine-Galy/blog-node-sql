@@ -17,18 +17,19 @@
             <th></th>
         </tr>
     </thead>
+     {{#each articles}}
     <tbody>
-        {{#each articles}}
+       
         <tr>
             <td>{{this.title}}</td>
             <td>{{this.content}}</td>
-            <td>{{this.author}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.category}}</td>
+            <td>{{this.user_firstname}} {{this.user_lastname}}</td>
+            <td>{{this.date_creation}}</td>
+            <td>{{this.name}}</td>
 
-            <td><img class="materialboxed" width="250" height="auto" src="/uploads/{{this.imageUrl}}" /></td>
+            <td><img class="materialboxed" width="250" height="auto" src="/{{this.type}}" /></td>
             <td>
-                <a href="/article/{{this._id}}">
+                <a href="/article/{{this.id}}">
                    <i class="material-icons" aria-hidden="true">edit</i>
                 </a>
                 <a href="/article/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');">
@@ -36,6 +37,6 @@
                 </a>
             </td>
         </tr>
-        {{/each}}
-    </tbody>
+        
+    </tbody>{{/each}}
 </table>

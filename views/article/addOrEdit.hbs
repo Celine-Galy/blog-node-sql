@@ -1,7 +1,7 @@
 <h3>{{viewTitle}}</h3>
-
+<li><a href="/picture">Ajouter une image</a></li>
 <form action="/article" method="POST" autocomplete="off">
-    <input type="hidden" name="_id" value="{{article._id}}">
+    <input type="hidden" name="id" value="">
     <div class="form-group">
         <label>Titre</label>
         <input type="text" class="form-control" name="title" value="{{article.title}}" placeholder="Titre">
@@ -17,61 +17,50 @@
             {{article.contentError}}
         </div>
     </div>
-   <div class="form-group md-6">
-        <label>Auteur</label>    
-       
-        <select value="{{author.user_firstname}}" name="user_firstname">
-        
-      <option >Choose your author</option>
-           {{#each authors}}
-      <option>{{this.user_firstname}} {{this.user_lastname}}</option>
-      {{/each}}
+    <div class="form-control">
+        <label>Date</label>
+         <input type="text" name="date_creation" class="datepicker">
+    </div>
+    <div class="form-group md-6">
+        <label>Auteur</label>
 
-    </select>  
-            
-        </div>
-       
-        <div class="form-group md-6">
-        <label>Catégorie</label>    
-       
-        <select value="{{category.id}}" name="name" multiple>
-        
-      <option >Choose your category</option>
-           {{#each categories}}
-      <option>{{this.name}}</option>
-      {{/each}}
+        <select name="id_user">
 
-    </select>  
-            
-        </div>
-   
+            <option>Choose your author</option>
+            {{#each authors}}
+            <option value="{{this.id}}">{{this.user_firstname}} {{this.user_lastname}}</option>
+            {{/each}}
 
- <div class="form-group">
-    <select class="icons">
-      <option value="" >Choose your picture</option>
-                 {{#each picture}}
-      <option value="{{id_picture}}" data-icon="images/sample-1.jpg" class="left">example 1</option>
-           {{/each}}
+        </select>
 
-    </select>
-    <label>Images in select</label>
-  </div>
-
-
-
-
-    <div class="form-group">
-        <input type="file" name="imageUrl" name="imageUrl" value="{{article.imageUrl}}">
-        <div class="image-preview">
-            <img src="/uploads/{{article.imageUrl}}" name="imageUrl" value="{{article.imageUrl}}"
-                alt="{{article.imageUrl}}">
-        </div>
     </div>
 
+    <div class="form-group md-6">
+        <label>Catégorie</label>
 
+        <select  name="id_category" multiple>
 
+            <option>Choose your category</option>
+            {{#each categories}}
+            <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
 
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="icons" name="id_picture" >
+            <option >Choose your picture</option>
+            {{#each picture}}
+            <option value="{{this.id_picture}}" data-icon="{{this.type}}" class="left">{{this.picturename}}</option>
+            {{/each}}
 
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="image-preview">
+            <img src="" name="id_picture" value="" alt="">
+        </div>
+    </div>
     <div class="form-group">
         <button type="submit" class="btn btn-info">
             <i class="fa fa-database"></i>Submit</button>
@@ -79,5 +68,5 @@
             <i class="fa fa-list-alt"></i>View All
         </a>
     </div>
- </div>
+    </div>
 </form>

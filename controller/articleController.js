@@ -1,10 +1,8 @@
 const express = require('express');
 const ArticleRepository = require('../article-repository');
 const CategoryRepository = require('../category-repository');
-
 const DBManager = require('../db-manager');
 const router = express.Router();
-
 const db = new DBManager();
 const articleRepository = new ArticleRepository(db);
 const categoryRepository = new CategoryRepository(db);
