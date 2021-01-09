@@ -44,9 +44,8 @@ function checkFileType(file, cb) {
     }
 }
 
-router.get('/', (req, res) =>
+router.get('/addPicture', (req, res) =>
     res.render('picture/addPicture'));
-
 
 router.post('/upload', (req, res) => {
 
@@ -74,13 +73,9 @@ router.post('/upload', (req, res) => {
                 }).catch((err) => {
                     throw err;
                 })
-
             }
-
         }
-
     })
 });
-
 
 module.exports = router;

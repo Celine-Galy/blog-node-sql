@@ -1,22 +1,23 @@
 <div class="container">
 <h3>{{viewTitle}}</h3>
-
+{{#each categories}}
 <form action="/adminCategory" method="POST" autocomplete="off">
-    <input type="hidden" name="id_category" value="">
+    <input type="hidden" name="id_category" value="{{this.id_category}}">
     <div class="form-group">
         <label>Nom</label>
-        <input type="text"  class="form-control" name="name" value="{{categories.name}}" placeholder="name">
+        <input type="text"  class="form-control" name="name" value="{{this.name}}" placeholder="name">
         <div class="text-danger">
-            {{categories.nameError}}
+            {{this.nameError}}
         </div>
     </div>
     <div class="form-group">
         <label>Contenu</label>
-        <textarea class="form-control" name="description" value="{{categories.description}}"
-            placeholder="Votre article">{{categories.description}}</textarea>
+        <textarea class="form-control" name="description" value="{{this.description}}"
+            placeholder="Votre article">{{this.description}}</textarea>
         <div class="text-danger">
-            {{categories.descriptionError}}
+            {{this.descriptionError}}
         </div>
+        {{/each}}
   </div>
     <div class="form-group">
         <button type="submit" class="btn btn-info">

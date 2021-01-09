@@ -7,8 +7,7 @@ const categoryController = require('./controller/categoryController');
 const adminArticleController = require('./controller/adminArticleController');
 const adminCategoryController = require('./controller/adminCategoryController');
 const pictureController = require('./controller/pictureController');
-
-
+const adminUserController = require('./controller/adminUserController');
 
 const bodyParser = require('body-parser');
 const Handlebars = require('handlebars');
@@ -54,3 +53,4 @@ app.use('/category', categoryController);
 app.use('/adminArticle', adminArticleController);
 app.use('/adminCategory', adminCategoryController);
 app.use('/picture', pictureController);
+app.use('/adminUser', adminUserController);

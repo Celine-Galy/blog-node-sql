@@ -13,20 +13,21 @@ const categoryRepository = new CategoryRepository(db);
 const userRepository = new UserRepository(db);
 const pictureRepository = new PictureRepository(db);
 
+// router.get("/addOrEditArticle", (req, res) => {
+//     res.render("adminArticle/addOrEditArticle", {
+//         viewTitle: "Insert Article"
+//     });
+// });
 
-
-router.get("/adminArticle", (req, res) => {
-    articleRepository.findAll().then((articles) => {
-        categoryRepository.findAllCategories().then((categories) => {
-            userRepository.findAllUsers().then((authors) => {
-                pictureRepository.findAllPictures().then((picture) => {
-                    res.render("adminArticle/addOrEdit", {
-                        articles: articles,
-                        categories: categories,
-                        picture: picture,
-                        authors: authors,
-                        viewTitle: "Insert Article"
-                    })
+router.get("/addOrEditArticle", (req, res) => {
+    categoryRepository.findAllCategories().then((categories) => {
+        userRepository.findAllUsers().then((authors) => {
+            pictureRepository.findAllPictures().then((picture) => {
+                res.render("adminArticle/addOrEditArticle", {
+                    categories: categories,
+                    picture: picture,
+                    authors: authors,
+                    viewTitle: "Insert Article"
                 })
             })
         })
@@ -44,7 +45,7 @@ router.post("/", (req, res) => {
     const id_user = req.body.id_user;
 
 
-    if (req.body.id == "") {
+    if (req.body.id_article == "") {
 
         articleRepository.insertArticle(title, id_picture, content, date_creation, id_user).then((result) => {
             const id_article = result.insertId;

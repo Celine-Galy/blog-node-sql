@@ -7,7 +7,7 @@ const db = new DBManager();
 const categoryRepository = new CategoryRepository(db);
 
 
-router.get("/adminCategory/addOrEdit", (req, res) => {
+router.get("/addOrEdit", (req, res) => {
     res.render("adminCategory/addOrEdit", {
         viewTitle: "Insert Category"
     });
@@ -16,9 +16,10 @@ router.get("/adminCategory/addOrEdit", (req, res) => {
 // handling the post route of the form
 
 router.post("/", (req, res) => {
-    const id = req.body.id;
+    const id = req.body.id_category;
     const name = req.body.name;
     const description = req.body.description;
+
     if (req.body.id == "") {
 
         categoryRepository.insertCategory(name, description).then((err) => {
@@ -30,7 +31,8 @@ router.post("/", (req, res) => {
             throw err;
         })
     } else {
-        categoryRepository.updateCategory(id, name, description).then((err) => {
+
+        categoryRepository.updateCategory(id, name, description).then(() => {
             categoryRepository.findCategoryById(id);
 
             res.redirect('adminCategory/list');
@@ -43,7 +45,7 @@ router.post("/", (req, res) => {
 });
 
 
-// to view all the articles present in the database
+// to view all the categories present in the database
 
 router.get('/list', (req, res) => {
 
@@ -63,7 +65,7 @@ router.get("/:id", (req, res) => {
 
     categoryRepository.findCategoryById(id).then((categories) => {
 
-        res.render("adminCategory/updateCategory", {
+        res.render("adminCategory/addOrEdit", {
             viewTitle: "Update Category",
             categories: categories
         })

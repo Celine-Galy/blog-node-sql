@@ -19,7 +19,6 @@ class PictureRepository {
         console.log(query);
         return this._dbManager.query(query);
     }
-
 }
 
 module.exports = PictureRepository;

@@ -1,7 +1,7 @@
 <div class="container">
 <h3>{{viewTitle}}</h3>
 
-<li><a href="/picture">Ajouter une image</a></li>
+<li><a href="/picture/addPicture">Ajouter une image</a></li>
 
 <form action="/adminArticle" method="POST" autocomplete="off">
     <input type="hidden" name="id_article" value="">
@@ -28,14 +28,12 @@
         <label>Auteur</label>
 
         <select name="id_user">
-
             <option>Choose your author</option>
             {{#each authors}}
-            <option value="{{this.id}}">{{this.user_firstname}} {{this.user_lastname}}</option>
+            <option value="{{this.id_user}}">{{this.user_firstname}} {{this.user_lastname}}</option>
             {{/each}}
 
         </select>
-
     </div>
 
     <div class="form-group md-6">
@@ -45,7 +43,7 @@
 
             <option>Choose your category</option>
             {{#each categories}}
-            <option value="{{this.id}}">{{this.name}}</option>
+            <option value="{{this.id_category}}">{{this.name}}</option>
             {{/each}}
 
         </select>
@@ -54,7 +52,7 @@
         <select class="icons" name="id_picture" >
             <option >Choose your picture</option>
             {{#each picture}}
-            <option value="{{this.id_picture}}" data-icon="{{this.type}}" class="left">{{this.picturename}}</option>
+            <option value="{{this.id_picture}}" data-icon="/{{this.type}}" class="left">{{this.picturename}}</option>
             {{/each}}
 
         </select>
