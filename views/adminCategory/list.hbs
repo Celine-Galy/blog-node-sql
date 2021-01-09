@@ -1,7 +1,8 @@
+<div class="container">
 <h3>
     {{viewTitle}}
 </h3>
-<a href="/category" class="btn btn-danger">
+<a href="/adminCategory" class="btn btn-danger">
     <i class="material-icons left" aria-hidden="true">add</i>Create New
 </a>
 <table class="table table-striped">
@@ -18,10 +19,10 @@
             <td>{{this.name}}</td>
             <td>{{this.description}}</td>
             <td>
-                <a href="/category/{{this.id}}">
+                <a href="/adminCategory/{{this.id_category}}">
                    <i class="material-icons" aria-hidden="true">edit</i>
                 </a>
-                <a href="/category/delete/{{this.id}}" onclick="return confirm('Are you sure to delete this record?');">
+                <a href="/adminCategory/delete/{{this.id_category}}" onclick="return confirm('Are you sure to delete this record?');">
                     <i class="material-icons" aria-hidden="true">delete</i>
                 </a>
             </td>
@@ -29,3 +30,4 @@
         {{/each}}
     </tbody>
 </table>
+</div>

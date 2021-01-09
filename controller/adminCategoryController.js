@@ -7,8 +7,8 @@ const db = new DBManager();
 const categoryRepository = new CategoryRepository(db);
 
 
-router.get("/", (req, res) => {
-    res.render("category/addOrEdit", {
+router.get("/adminCategory/addOrEdit", (req, res) => {
+    res.render("adminCategory/addOrEdit", {
         viewTitle: "Insert Category"
     });
 });
@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 
         categoryRepository.insertCategory(name, description).then((err) => {
 
-            res.redirect('category/list');
+            res.redirect('adminCategory/list');
 
         }).catch((err) => {
             console.log(err);
@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
         categoryRepository.updateCategory(id, name, description).then((err) => {
             categoryRepository.findCategoryById(id);
 
-            res.redirect('category/list');
+            res.redirect('adminCategory/list');
 
         }).catch((err) => {
             console.log(err);
@@ -49,7 +49,7 @@ router.get('/list', (req, res) => {
 
     categoryRepository.findAllCategories().then((categories) => {
 
-        res.render('category/list', {
+        res.render('adminCategory/list', {
             categories: categories,
             viewTitle: "Admin"
         });
@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
 
     categoryRepository.findCategoryById(id).then((categories) => {
 
-        res.render("category/updateCategory", {
+        res.render("adminCategory/updateCategory", {
             viewTitle: "Update Category",
             categories: categories
         })
@@ -76,8 +76,7 @@ router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
     categoryRepository.deleteCategory(id).then((err) => {
         categoryRepository.findCategoryById(id);
-
-        res.redirect('/category/list');
+        res.redirect('/adminCategory/list');
 
     }).catch((err) => {
         throw err;

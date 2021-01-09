@@ -1,7 +1,8 @@
+<div class="container">
 <h3>
     {{viewTitle}}
 </h3>
-<a href="/article" class="btn btn-danger">
+<a href="/adminArticle" class="btn btn-danger">
     {{!-- <i class="material-icons"aria-hidden="true">add</i>  --}}
     Create New
 </a>
@@ -17,9 +18,9 @@
             <th></th>
         </tr>
     </thead>
-     {{#each articles}}
+    
     <tbody>
-       
+        {{#each articles}}
         <tr>
             <td>{{this.title}}</td>
             <td>{{this.content}}</td>
@@ -29,14 +30,15 @@
 
             <td><img class="materialboxed" width="250" height="auto" src="/{{this.type}}" /></td>
             <td>
-                <a href="/article/{{this.id}}">
+                <a href="/adminArticle/{{this.id}}">
                    <i class="material-icons" aria-hidden="true">edit</i>
                 </a>
-                <a href="/article/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');">
+                <a href="/adminArticle/delete/{{this.id}}" onclick="return confirm('Are you sure to delete this record?');">
                     <i class="material-icons" aria-hidden="true">delete</i>
                 </a>
             </td>
         </tr>
-        
-    </tbody>{{/each}}
+        {{/each}}
+    </tbody>
 </table>
+</div>

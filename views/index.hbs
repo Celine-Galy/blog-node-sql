@@ -1,17 +1,16 @@
+<div class="container">
+  <h3>{{viewTitle}}</h3>
+  <p>Tous nos articles sont ici!</p>
 
-<h3>{{viewTitle}}</h3>
-<p>Tous nos articles sont ici!</p>
 
-  
   <div class="row">
 
-      <div class="col s3">
-       
-         {{#each list}}
-            <li><a href="/{{this.id}}">{{this.name}}</a></li>
-        {{/each}}
-   
-      </div>
+    <div class="col s2">
+      {{#each list}}
+      <li><a href="category/{{this.id_category}}">{{this.name}}</a></li>
+      {{/each}}
+    </div>
+
     <div class="col s9">{{#each articles}}
       <div class="card large">
         <div class="card-image">
@@ -19,23 +18,24 @@
           <span class="card-title">{{this.title}}</span>
         </div>
         <div class="card-content">
-          <p>{{this.name}}</p>
+          <p><span class="new badge">{{this.name}}</span></p>
         </div>
-         <div class="card-content">
+        <div class="card-content">
           <p>{{this.user_firstname}} {{user_lastname}}</p>
         </div>
         <div class="card-content">
           <p>{{this.content}}</p>
         </div>
-        
-         <div class="card-content">
+
+        <div class="card-content">
           <p>{{this.date_creation}}</p>
         </div>
         <div class="card-action">
-          <a href="/{{this.id}}"> Voir l'article</a>
-              
+          <a href="/{{this.id_article}}"> Voir l'article</a>
+
         </div>{{/each}}
       </div>
     </div>
   </div>
-   
+</div>
+

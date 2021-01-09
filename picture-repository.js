@@ -12,9 +12,8 @@ class PictureRepository {
 
         let query = "SELECT * FROM pictures";
         return this._dbManager.query(query);
-
-
     }
+
     insertPicture(insertfilename, insertpath) {
         let query = `INSERT INTO pictures (picturename, type) VALUES ('${insertfilename}', '${insertpath}')`;
         console.log(query);

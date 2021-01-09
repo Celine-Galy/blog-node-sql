@@ -14,15 +14,19 @@ const userRepository = new UserRepository(db);
 const pictureRepository = new PictureRepository(db);
 
 
-router.get("/", (req, res) => {
-    categoryRepository.findAllCategories().then((categories) => {
-        userRepository.findAllUsers().then((authors) => {
-            pictureRepository.findAllPictures().then((picture) => {
-                res.render("article/addOrEdit", {
-                    categories: categories,
-                    picture: picture,
-                    authors: authors,
-                    viewTitle: "Insert Article"
+
+router.get("/adminArticle", (req, res) => {
+    articleRepository.findAll().then((articles) => {
+        categoryRepository.findAllCategories().then((categories) => {
+            userRepository.findAllUsers().then((authors) => {
+                pictureRepository.findAllPictures().then((picture) => {
+                    res.render("adminArticle/addOrEdit", {
+                        articles: articles,
+                        categories: categories,
+                        picture: picture,
+                        authors: authors,
+                        viewTitle: "Insert Article"
+                    })
                 })
             })
         })
@@ -47,7 +51,7 @@ router.post("/", (req, res) => {
             const id_category = req.body.id_category;
             articleRepository.insertArticleJoinCategory(id_article, id_category).then((err) => {
 
-                res.redirect('article/list')
+                res.redirect('adminArticle/list')
 
             });
         }).catch((err) => {
@@ -62,7 +66,7 @@ router.get('/list', (req, res) => {
 
     articleRepository.findAll().then((articles) => {
 
-        res.render('article/list', {
+        res.render('adminArticle/list', {
             articles: articles,
             viewTitle: "Admin"
         });
@@ -72,5 +76,19 @@ router.get('/list', (req, res) => {
     });
 
 });
+
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    articleRepository.deleteArticle(id).then((err) => {
+        articleRepository.findArticleById(id);
+
+        res.redirect('adminArticle/list');
+
+    }).catch((err) => {
+        throw err;
+    })
+
+});
+
 
 module.exports = router;

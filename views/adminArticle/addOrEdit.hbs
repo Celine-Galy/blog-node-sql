@@ -1,25 +1,28 @@
+<div class="container">
 <h3>{{viewTitle}}</h3>
+
 <li><a href="/picture">Ajouter une image</a></li>
-<form action="/article" method="POST" autocomplete="off">
-    <input type="hidden" name="id" value="">
+
+<form action="/adminArticle" method="POST" autocomplete="off">
+    <input type="hidden" name="id_article" value="">
     <div class="form-group">
         <label>Titre</label>
-        <input type="text" class="form-control" name="title" value="{{article.title}}" placeholder="Titre">
+        <input type="text" class="form-control" name="title" value="{{articles.title}}" placeholder="Titre">
         <div class="text-danger">
-            {{article.titleError}}
+            {{articles.titleError}}
         </div>
     </div>
     <div class="form-group">
         <label>Contenu</label>
-        <textarea class="form-control" name="content" value="{{article.content}}"
-            placeholder="Votre article">{{article.content}}</textarea>
+        <textarea class="form-control" name="content" value="{{articles.content}}"
+            placeholder="Votre article">{{articles.content}}</textarea>
         <div class="text-danger">
-            {{article.contentError}}
+            {{articles.contentError}}
         </div>
     </div>
     <div class="form-control">
         <label>Date</label>
-         <input type="text" name="date_creation" class="datepicker">
+         <input type="text" name="date_creation" class="datepicker" value="{{date_creation}}">
     </div>
     <div class="form-group md-6">
         <label>Auteur</label>
@@ -58,15 +61,16 @@
     </div>
     <div class="form-group">
         <div class="image-preview">
-            <img src="" name="id_picture" value="" alt="">
+            <img src="/{{this.type}}" name="picturename" value="{{this.type}}" alt="{{this.picturename}}">
         </div>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-info">
             <i class="fa fa-database"></i>Submit</button>
-        <a href="/article/list" class="btn btn-danger">
+        <a href="/adminArticle/list" class="btn btn-danger">
             <i class="fa fa-list-alt"></i>View All
         </a>
     </div>
     </div>
 </form>
+</div>

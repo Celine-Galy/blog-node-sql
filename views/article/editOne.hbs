@@ -1,0 +1,25 @@
+<div class="container">
+    {{#each article}}
+    <h3 name="title">{{this.title}}</h3>
+    <div class="row">
+        <div class="col s12">
+
+            <div class="card">
+               
+                <div class="card-image">
+                    <img name="type" src="/{{this.type}}">
+                </div>
+                <div class="card-content">
+                    <p name="content" value="{{this.content}}">{{this.content}}</p>
+                </div>
+                <div class="card-content">
+                    <p>{{this.user_firstname}}</p>
+                </div>
+                <div class="card-content">
+                    <p>{{this.date_creation}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    </div>

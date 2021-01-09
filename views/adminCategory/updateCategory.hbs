@@ -1,7 +1,7 @@
-
+<div class="container">
 <h3>{{viewTitle}}</h3>
 
-<form action="/category" method="POST" autocomplete="off"> 
+<form action="/adminCategory" method="POST" autocomplete="off"> 
 {{#each categories}}
     <input type="hidden" name="id" value="{{this.id}}">
     <div class="form-group">
@@ -16,12 +16,13 @@
         
    {{/each}}
     <div class="form-group">
-        <button type="submit" class="btn btn-info">
-            <i class="fa fa-database"></i>Submit</button>
-        <a href="/category/list" class="btn btn-danger">
+       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+        <a href="/adminCategory/list" class="btn btn-danger">
             <i class="fa fa-list-alt"></i>View All
         </a>
     </div>
  </div>
 
-</form>
+</form></div>

@@ -3,6 +3,7 @@ const express = require('express'); // Appel de la dépendance
 const app = express(); // Initialisation de l'application
 const DBManager = require('./db-manager');
 const articleController = require('./controller/articleController');
+const categoryController = require('./controller/categoryController');
 const adminArticleController = require('./controller/adminArticleController');
 const adminCategoryController = require('./controller/adminCategoryController');
 const pictureController = require('./controller/pictureController');
@@ -48,8 +49,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 app.use('/', articleController);
-app.use('/article', adminArticleController);
-app.use('/category', adminCategoryController);
+app.use('/category', categoryController);
+app.use('/adminArticle', adminArticleController);
+app.use('/adminCategory', adminCategoryController);
 app.use('/picture', pictureController);

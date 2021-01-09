@@ -8,7 +8,11 @@ class ArticleRepository {
     }
     findAll() {
 
-        let query = "SELECT * FROM articles INNER JOIN users on users.id = articles.id_user INNER JOIN pictures on pictures.id_picture = articles.id_picture INNER JOIN articles_categories on articles_categories.id_article = articles.id INNER JOIN categories on categories.id = articles_categories.id_category";
+        let query = `SELECT * FROM articles 
+        INNER JOIN users on users.id_user = articles.id_user 
+        INNER JOIN pictures on pictures.id_picture = articles.id_picture 
+        INNER JOIN articles_categories on articles_categories.id_article = articles.id_article
+        INNER JOIN categories on categories.id_category = articles_categories.id_category`;
         return this._dbManager.query(query);
 
 
@@ -23,11 +27,25 @@ class ArticleRepository {
         return this._dbManager.query(query);
     }
 
-    searchByName(search) {
-
-        let query = "SELECT * FROM articles WHERE content like '%" + search + "%'";
-        return this._dbManager.query(query);
+    findArticleById(id) {
+        let queryarticle = `SELECT * FROM articles 
+        INNER JOIN users on users.id_user = articles.id_user 
+        INNER JOIN pictures on pictures.id_picture = articles.id_picture 
+        INNER JOIN articles_categories on articles_categories.id_article = articles.id_article
+        INNER JOIN categories on categories.id_category = articles_categories.id_category WHERE articles.id_article='${id}'`;
+        console.log(queryarticle);
+        return this._dbManager.query(queryarticle);
     }
+    deleteArticle(id) {
+            let query = `DELETE FROM articles WHERE id='${id}'`;
+            console.log(query);
+            return this._dbManager.query(query);
+        }
+        // searchByName(search) {
+
+    //     let query = "SELECT * FROM articles WHERE content like '%" + search + "%'";
+    //     return this._dbManager.query(query);
+    // }
 
 }
 

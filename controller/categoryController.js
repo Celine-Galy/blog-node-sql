@@ -5,11 +5,11 @@ const router = express.Router();
 const db = new DBManager();
 const categoryRepository = new CategoryRepository(db);
 
-router.get('/', (req, res) => {
+router.get('/listCategory', (req, res) => {
 
-    categoryRepository.findAllCategories().then((err, categories) => {
-        res.render('listCategory', {
-            categories,
+    categoryRepository.findAllCategories().then((list) => {
+        res.render('category/listCategory', {
+            list,
             viewTitle: "Liste des catégories"
         });
     }).catch((err) => {
@@ -17,3 +17,18 @@ router.get('/', (req, res) => {
         throw err;
     });
 });
+
+router.get("/:id", (req, res) => {
+    const id = req.params.id;
+
+    categoryRepository.findCategoryById(id).then((category) => {
+
+        res.render('category/editOneCategory', {
+
+            category: category
+        })
+    }).catch((err) => {
+        throw err;
+    });
+});
+module.exports = router;
