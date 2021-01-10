@@ -1,0 +1,72 @@
+<div class="container">
+<h3>{{viewTitle}}</h3>
+
+<li><a href="/picture/addPicture">Ajouter une image</a></li>
+<li><a href="/adminCategory/addOrEdit">Ajouter une catégorie</a></li>
+
+<form action="/adminArticle" method="POST" autocomplete="off">
+{{#each articles}}
+    <input type="hidden" name="id_article" value="{{this.id_article}}">
+    
+    <div class="form-group">
+        <label>Titre</label>
+        <input type="text" class="form-control" name="title" value="{{this.title}}" placeholder="Titre">
+        <div class="text-danger">
+            {{this.titleError}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Contenu</label>
+        <textarea class="form-control" name="content" value="{{this.content}}"
+            placeholder="Votre article">{{this.content}}</textarea>
+        <div class="text-danger">
+            {{this.contentError}}
+        </div>
+    </div>
+    <div class="form-control">
+        <label>Date</label>
+         <input type="text" name="date_creation" class="datepicker" value="{{date_creation}}">
+    </div>{{/each}}
+    <div class="form-group md-6">
+        <label>Auteur</label>
+
+        <select name="id_user">
+            <option>Choose your author</option>
+            {{#each authors}}
+            <option value="{{this.id_user}}">{{this.user_firstname}} {{this.user_lastname}}</option>
+            {{/each}}
+
+        </select>
+    </div>
+
+    <div class="form-group md-6">
+        <label>Catégorie</label>
+
+        <select name="id_category">
+            <option>Choose your category</option>
+            {{#each categories}}
+            <option value="{{this.id_category}}">{{this.name}}</option>
+            {{/each}}
+
+        </select>
+    </div>
+    <div class="form-group">
+        <select name="id_picture" class="icons">
+            <option >Choose your picture</option>
+            {{#each picture}}
+            <option value="{{this.id_picture}}" data-icon="/{{this.type}}" class="left">{{this.picturename}}</option>
+            {{/each}}
+
+        </select>
+    </div>
+  
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">
+            <i class="fa fa-database"></i>Submit</button>
+        <a href="/adminArticle/list" class="btn btn-danger">
+            <i class="fa fa-list-alt"></i>View All
+        </a>
+    </div>
+    </div>
+</form>
+</div>

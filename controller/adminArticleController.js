@@ -34,10 +34,11 @@ router.get("/addOrEditArticle", (req, res) => {
     })
 });
 
+
 // handling the post route of the form
 
 router.post("/", (req, res) => {
-
+    const id = req.body.id_article;
     const title = req.body.title;
     const id_picture = req.body.id_picture;
     const content = req.body.content;
@@ -56,6 +57,17 @@ router.post("/", (req, res) => {
 
             });
         }).catch((err) => {
+            throw err;
+        })
+    } else {
+
+        articleRepository.updateArticle(id, title, id_picture, content, date_creation, id_user).then(() => {
+            articleRepository.findArticleById(id);
+
+            res.redirect('adminArticle/list');
+
+        }).catch((err) => {
+            console.log(err);
             throw err;
         })
     }
@@ -78,12 +90,36 @@ router.get('/list', (req, res) => {
 
 });
 
+router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    articleRepository.findArticleById(id).then((articles) => {
+        categoryRepository.findAllCategories().then((categories) => {
+            userRepository.findAllUsers().then((authors) => {
+                pictureRepository.findAllPictures().then((picture) => {
+
+                    res.render("adminArticle/updateArticle", {
+                        viewTitle: "Update Article",
+                        articles: articles,
+                        categories: categories,
+                        authors: authors,
+                        picture: picture
+                    })
+                }).catch((err) => {
+                    throw err;
+                });
+            })
+        })
+    })
+});
+
 router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
+    console.log('toto');
+    console.log(req.params.id);
     articleRepository.deleteArticle(id).then((err) => {
         articleRepository.findArticleById(id);
 
-        res.redirect('adminArticle/list');
+        res.redirect('/adminArticle/list');
 
     }).catch((err) => {
         throw err;

@@ -3,7 +3,7 @@
 
 <form action="/adminCategory" method="POST" autocomplete="off"> 
 {{#each categories}}
-    <input type="hidden" name="id" value="{{this.id}}">
+    <input type="hidden" name="id_category" value="{{this.id_category}}">
     <div class="form-group">
         <label>Nom</label>
         <input type="text"  class="form-control" name="name" value="{{this.name}}" placeholder="name">

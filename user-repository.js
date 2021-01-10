@@ -13,7 +13,7 @@ class UserRepository {
     }
 
     insertUser() {
-        let query = "INSERT into users (user_firstname, user_lastname, user_password, user_email, id_user_picture) VALUES ()";
+        let query = `INSERT into users (user_firstname, user_lastname, user_password, user_email, id_user_picture) VALUES ('${user_firstname}' , '${user_lastname}', '${user_password}','${user_email}', '${id_user_picture}')`;
     }
 
 

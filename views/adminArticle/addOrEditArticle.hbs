@@ -2,6 +2,7 @@
 <h3>{{viewTitle}}</h3>
 
 <li><a href="/picture/addPicture">Ajouter une image</a></li>
+<li><a href="/adminCategory/addOrEdit">Ajouter une catégorie</a></li>
 
 <form action="/adminArticle" method="POST" autocomplete="off">
     <input type="hidden" name="id_article" value="">
@@ -57,11 +58,7 @@
 
         </select>
     </div>
-    <div class="form-group">
-        <div class="image-preview">
-            <img src="/{{this.type}}" name="picturename" value="{{this.type}}" alt="{{this.picturename}}">
-        </div>
-    </div>
+  
     <div class="form-group">
         <button type="submit" class="btn btn-info">
             <i class="fa fa-database"></i>Submit</button>

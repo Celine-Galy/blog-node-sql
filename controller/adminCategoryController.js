@@ -9,7 +9,7 @@ const categoryRepository = new CategoryRepository(db);
 
 router.get("/addOrEdit", (req, res) => {
     res.render("adminCategory/addOrEdit", {
-        viewTitle: "Insert Category"
+        viewTitle: "Insert Category",
     });
 });
 
@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
     const name = req.body.name;
     const description = req.body.description;
 
-    if (req.body.id == "") {
+    if (req.body.id_category == "") {
 
         categoryRepository.insertCategory(name, description).then((err) => {
 
@@ -62,10 +62,9 @@ router.get('/list', (req, res) => {
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;
-
     categoryRepository.findCategoryById(id).then((categories) => {
 
-        res.render("adminCategory/addOrEdit", {
+        res.render("adminCategory/updateCategory", {
             viewTitle: "Update Category",
             categories: categories
         })

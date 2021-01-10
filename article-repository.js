@@ -46,11 +46,16 @@ class ArticleRepository {
         return this._dbManager.query(query);
     }
 
+    updateArticle(id, title, id_picture, content, date_creation, id_user) {
+        let query = `UPDATE articles SET title = '${title}' , id_picture = '${id_picture}', content = '${content}', date_creation = '${date_creation}', id_user = '${id_user}' WHERE id_article = '${id}'`;
+        console.log(query);
+        return this._dbManager.query(query);
+    }
 
     deleteArticle(id) {
-            let query = `
-            DELETE FROM articles WHERE id = '${id}'
-            `;
+            let query = `DELETE FROM articles_categories WHERE id_article ='${id}'`;
+            `DELETE  FROM articles WHERE id_article = '${id}'`;
+
             console.log(query);
             return this._dbManager.query(query);
         }
