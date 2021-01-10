@@ -36,8 +36,21 @@ class ArticleRepository {
         console.log(queryarticle);
         return this._dbManager.query(queryarticle);
     }
+
+    findArticleByCategory(id) {
+        let query = `SELECT * FROM articles INNER JOIN users on users.id_user = articles.id_user 
+        INNER JOIN pictures on pictures.id_picture = articles.id_picture 
+        INNER JOIN articles_categories on articles_categories.id_article = articles.id_article
+        INNER JOIN categories on categories.id_category = articles_categories.id_category WHERE categories.id_category='${id}'`;
+        console.log(query);
+        return this._dbManager.query(query);
+    }
+
+
     deleteArticle(id) {
-            let query = `DELETE FROM articles WHERE id='${id}'`;
+            let query = `
+            DELETE FROM articles WHERE id = '${id}'
+            `;
             console.log(query);
             return this._dbManager.query(query);
         }
