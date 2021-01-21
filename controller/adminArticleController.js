@@ -44,6 +44,7 @@ router.post("/", (req, res) => {
     const content = req.body.content;
     const date_creation = req.body.date_creation;
     const id_user = req.body.id_user;
+    const id_category = req.body.id_category;
 
 
     if (req.body.id_article == "") {
@@ -62,10 +63,12 @@ router.post("/", (req, res) => {
     } else {
 
         articleRepository.updateArticle(id, title, id_picture, content, date_creation, id_user).then(() => {
-            articleRepository.findArticleById(id);
+            articleRepository.updateArticleCategory(id, id_category).then(() => {
+                articleRepository.findArticleById(id);
 
-            res.redirect('adminArticle/list');
+                res.redirect('adminArticle/list');
 
+            })
         }).catch((err) => {
             console.log(err);
             throw err;

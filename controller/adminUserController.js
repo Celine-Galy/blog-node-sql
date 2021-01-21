@@ -19,6 +19,21 @@ router.get("/addUser", (req, res) => {
         });
     })
 });
+router.get("/login", (req, res) => {
+    res.render("adminUser/login", {
+        viewTitle: "Veuillez vous identifier"
+    });
+});
+
+function checkAuth(req, res, next) {
+    // if logined or it's login request, then go next route
+    if (isLogin || (req.path === '/login' && req.method === 'POST')) {
+        next()
+    } else {
+        res.send('Not logged in yet.')
+    }
+}
+
 
 
 module.exports = router;

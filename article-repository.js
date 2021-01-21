@@ -51,6 +51,11 @@ class ArticleRepository {
         console.log(query);
         return this._dbManager.query(query);
     }
+    updateArticleCategory(id, id_category) {
+        let query = `UPDATE articles_categories SET id_article = '${id}' , id_category = '${id_category}' WHERE id_article = '${id}'`;
+        console.log(query);
+        return this._dbManager.query(query);
+    }
 
     deleteArticle(id) {
             let query = `DELETE FROM articles_categories WHERE id_article ='${id}'`;
